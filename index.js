@@ -43,7 +43,11 @@ menuHandler = (menuSection) => {
                                         <div>
                                             <br />
                                             <button 
-                                              id=${menuSection + "_" + index} 
+                                              id=${
+                                                menuSection.replace(/ /g, "") +
+                                                "_" +
+                                                index
+                                              } 
                                               class="btn btn-dark add-to-cart-button"
                                               >
                                                 Add To cart
@@ -57,34 +61,6 @@ menuHandler = (menuSection) => {
   sectionContent.innerHTML = sectionContentReplace;
   addToCartButtons = document.querySelectorAll(".add-to-cart-button");
   bindAddToCartButtons();
-};
-
-const renderCart = () => {
-  let cartItems = document.getElementById("items");
-  cartItems.innerHTML = order.length + " Items";
-};
-
-const addItemToCartHandler = (event) => {
-  let id = event.target.getAttribute("id");
-  let [menuSection, menuId] = id.split("_");
-
-  let actualMenu = products.filter((el) => {
-    return el.name === menuSection;
-  });
-  let actualProduct = actualMenu[0].products[menuId];
-  let productInOrder = order.find(
-    (element) => element.name === actualProduct.name
-  );
-  if (productInOrder) {
-    productInOrder.quantity++;
-  } else {
-    let newProduct = {
-      ...actualProduct,
-      quantity: 1,
-    };
-    order.push(newProduct);
-  }
-  renderCart();
 };
 
 const placeOrderHandler = () => {
@@ -112,24 +88,66 @@ const placeOrderHandler = () => {
       sectionContentReplace += `<tr>
                                   <td><strong>${index + 1}</strong></td>
                                   <td>${item.quantity}</td>
-                                  <td>${item.description}</td>
+                                  <td>${item.name}</td>
                                   <td>${item.price}</td>
-                                  <td>${item.price * item.quantity}</td>
+                                  <td>${(item.price * item.quantity).toFixed(2)}</td>
                                 </tr>`;
-      totalAmount += item.price;
+      totalAmount += item.price * item.quantity;
     });
     sectionContentReplace += `</tbody>
                               </table>
-                              <p id="total">Total: <span>$${totalAmount}</span></p>
+                              <p id="total">Total: <span>$${totalAmount.toFixed(2)}</span></p>
                               <hr />
                               <div id="order-buttons">
-                                <button type="button" id="cancel-btn" class="btn btn-outline-info cancel-btn">Cancel</button>
+                                <button type="button" id="cancel-btn" data-toggle="modal" data-target="#confirmationModal" class="btn btn-outline-info cancel-btn">Cancel</button>
                                 <button type="button" id="confirm-btn" class="btn btn-outline-dark confirm-btn">Confirm Order</button>
                             </div>`;
   }
   sectionName.innerHTML = sectionNameReplace;
   sectionContent.innerHTML = sectionContentReplace;
   bindManageOrderButtons();
+};
+
+const renderCart = () => {
+  let cartItems = document.getElementById("items");
+  if (order.length > 0) {
+    cartItems.innerHTML = order.length + " Items";
+  } else {
+    cartItems.innerHTML = "Add some items";
+  }
+};
+
+const addItemToCartHandler = (event) => {
+  let id = event.target.getAttribute("id");
+  let [menuSection, menuId] = id.split("_");
+  if (menuSection === "DrinksandSides") {
+    menuSection = "Drinks and Sides";
+  }
+  let actualMenu = products.filter((el) => {
+    return el.name === menuSection;
+  });
+  let actualProduct = actualMenu[0].products[menuId];
+  let productInOrder = order.find(
+    (element) => element.name === actualProduct.name
+  );
+  if (productInOrder) {
+    productInOrder.quantity++;
+  } else {
+    let newProduct = {
+      ...actualProduct,
+      quantity: 1,
+    };
+    order.push(newProduct);
+  }
+  renderCart();
+  $(".toast").toast("show");
+};
+
+const cancelOrderHandler = () => {
+  order = [];
+  renderCart();
+  menuHandler("Burguers");
+  $("#confirmationModal").modal("hide");
 };
 
 document.getElementById("burgers").addEventListener("click", () => {
@@ -150,7 +168,18 @@ document.getElementById("drinks").addEventListener("click", () => {
 document.getElementById("cart-placeholder").addEventListener("click", () => {
   placeOrderHandler();
 });
-const bindManageOrderButtons = () => {};
+const bindManageOrderButtons = () => {
+  if (order.length > 0) {
+    document
+      .getElementById("modal-cancel-btn")
+      .addEventListener("click", () => {
+        cancelOrderHandler();
+      });
+    document.getElementById("confirm-btn").addEventListener("click", () => {
+      console.log(order);
+    });
+  }
+};
 const bindAddToCartButtons = () => {
   addToCartButtons.forEach((btn) => {
     btn.addEventListener("click", (evt) => {

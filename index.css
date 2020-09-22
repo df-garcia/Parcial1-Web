@@ -1,67 +1,9 @@
-#logo {
-  font-family: "Satisfy", cursive;
-  font-size: 35px;
-}
-
-#divider {
-  margin-top: 2px;
-}
-
-#main-img {
-  width: 100%;
-}
-
-#img-carrito {
-  height: 40px;
-}
-
-#items {
-  margin: 0;
-  vertical-align: middle;
-}
-
-#menu-bar {
-  height: 80px;
-}
-
 a:hover {
   cursor: pointer;
 }
 
-#total {
-  font-weight: bold;
-  margin-bottom: 0;
-}
-
-#order-buttons {
-  float: right;
-  margin-top: 0;
-  margin-right: 40px;
-}
-
 .card {
   margin-bottom: 7px;
-}
-
-#section-content {
-  width: 100%;
-  margin: 0px;
-  padding: 0px;
-}
-
-#general-container {
-  width: 100%;
-  margin: 0px;
-  padding: 0px;
-}
-
-#cart-placeholder:hover {
-  cursor: pointer;
-}
-
-#cart-summary {
-    margin-top: -17px;
-    padding-top: 0px;
 }
 
 .cancel-btn,
@@ -76,4 +18,66 @@ a:hover {
   background-color: antiquewhite;
   border-width: 2px;
   color: black;
+}
+
+#logo {
+  font-family: "Satisfy", cursive;
+  font-size: 35px;
+}
+
+#img-carrito {
+  height: 40px;
+}
+
+#divider {
+  margin-top: 2px;
+}
+
+#main-img {
+  width: 100%;
+}
+
+#items {
+  margin: 0;
+  vertical-align: middle;
+}
+
+#menu-bar {
+  height: 80px;
+}
+
+#total {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+#order-buttons {
+  float: right;
+  margin-top: 0;
+  margin-right: 40px;
+}
+
+#section-content {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+#modal-cancel-btn {
+  margin-bottom: 5px;
+}
+
+#general-container {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+#cart-placeholder:hover {
+  cursor: pointer;
+}
+
+#cart-summary {
+  margin-top: -17px;
+  padding-top: 0px;
 }
