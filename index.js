@@ -11,6 +11,7 @@ fetch(URL)
   })
   .then((data) => {
     products = data;
+    menuHandler("Burguers");
   });
 
 menuHandler = (menuSection) => {
@@ -122,12 +123,13 @@ const placeOrderHandler = () => {
                               <p id="total">Total: <span>$${totalAmount}</span></p>
                               <hr />
                               <div id="order-buttons">
-                                <button type="button" class="btn btn-outline-info cancel-btn">Cancel</button>
-                                <button type="button" class="btn btn-outline-dark confirm-btn">Confirm Order</button>
+                                <button type="button" id="cancel-btn" class="btn btn-outline-info cancel-btn">Cancel</button>
+                                <button type="button" id="confirm-btn" class="btn btn-outline-dark confirm-btn">Confirm Order</button>
                             </div>`;
   }
   sectionName.innerHTML = sectionNameReplace;
   sectionContent.innerHTML = sectionContentReplace;
+  bindManageOrderButtons();
 };
 
 document.getElementById("burgers").addEventListener("click", () => {
@@ -148,6 +150,7 @@ document.getElementById("drinks").addEventListener("click", () => {
 document.getElementById("cart-placeholder").addEventListener("click", () => {
   placeOrderHandler();
 });
+const bindManageOrderButtons = () => {};
 const bindAddToCartButtons = () => {
   addToCartButtons.forEach((btn) => {
     btn.addEventListener("click", (evt) => {
