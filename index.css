@@ -1,0 +1,36 @@
+#logo {
+  font-family: "Satisfy", cursive;
+  font-size: 25px;
+}
+
+#img-carrito {
+  height: 40px;
+}
+
+#items {
+  margin: 0;
+  vertical-align: middle;
+}
+
+#menu-bar {
+  height: 80px;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+#total {
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+#order-buttons {
+  float: right;
+  margin-top: 0;
+  margin-right: 40px;
+}
+
+.card {
+  margin-bottom: 10px;
+}
