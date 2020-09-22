@@ -1,6 +1,14 @@
 #logo {
   font-family: "Satisfy", cursive;
-  font-size: 25px;
+  font-size: 35px;
+}
+
+#divider {
+  margin-top: 2px;
+}
+
+#main-img {
+  width: 100%;
 }
 
 #img-carrito {
@@ -32,5 +40,40 @@ a:hover {
 }
 
 .card {
-  margin-bottom: 10px;
+  margin-bottom: 7px;
+}
+
+#section-content {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+#general-container {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+#cart-placeholder:hover {
+  cursor: pointer;
+}
+
+#cart-summary {
+    margin-top: -17px;
+    padding-top: 0px;
+}
+
+.cancel-btn,
+.cancel-btn:hover {
+  background-color: tomato;
+  border-width: 2px;
+  color: black;
+}
+
+.confirm-btn,
+.confirm-btn:hover {
+  background-color: antiquewhite;
+  border-width: 2px;
+  color: black;
 }

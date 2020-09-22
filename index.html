@@ -27,7 +27,7 @@
     <div class="container">
       <div class="row">
         <div class="col-12">
-          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <nav class="navbar navbar-expand-sm navbar-light bg-white">
             <button
               class="navbar-toggler"
               type="button"
@@ -46,28 +46,33 @@
                   Restaurant & Lounge
                 </a>
               </ul>
-              <div class="form-inline my-2 my-lg-0" id="placeholder-carrito">
+              <div class="form-inline my-2 my-lg-0" id="cart-placeholder">
                 <img
                   id="img-carrito"
                   src="https://i.imgur.com/1EKrQIi.png"
                   alt="carrito"
                 />
-                <p id="items">2 Items</p>
+                <p id="items">Add some items</p>
               </div>
             </div>
           </nav>
+          <hr id="divider" />
         </div>
       </div>
       <div class="row">
         <div class="col-12">
-          <img src="https://i.imgur.com/S8Ffdqa.png" alt="main-image" />
+          <img
+            id="main-img"
+            src="https://i.imgur.com/S8Ffdqa.png"
+            alt="main-image"
+          />
           <hr />
         </div>
       </div>
       <div class="row">
         <div class="col-12">
           <nav
-            class="navbar navbar-expand-lg navbar-dark bg-dark"
+            class="navbar navbar-expand-sm navbar-dark bg-dark"
             id="menu-bar"
           >
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -94,11 +99,16 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-12">
+        <div class="col-12" id="general-container">
           <h1 class="text-center" id="section-title"></h1>
+
           <div>
             <div class="container-fluid">
-              <div class="row" id="section-content"></div>
+              <hr />
+              <div
+                class="row text-center justify-content-center"
+                id="section-content"
+              ></div>
             </div>
           </div>
         </div>
@@ -107,7 +117,9 @@
         <div class="col-12">
           <br />
           <p class="text-center">
-            Contact us: +57 3102105253 - info@restaurant.com - @restaurant
+            <strong>
+              Contact us: +57 3102105253 - info@restaurant.com - @restaurant
+            </strong>
           </p>
         </div>
       </div>
